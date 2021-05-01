@@ -1,0 +1,32 @@
+import tkinter as tk
+from tkinter import filedialog, Text
+import os
+
+root = tk.Tk()
+
+
+canvas = tk.Canvas(root, height=700, width=700, bg="#000000")
+greeting = tk.Label(text="Welcome to Password Manager")
+greeting.pack()
+canvas.pack()
+
+
+username = tk.Text(root, height=1, width=30)
+username.pack()
+userfield = "Username"
+username.insert(tk.END, userfield)
+
+password = tk.Text(root, height=1, width=30)
+password.pack()
+pwdfield = "Password"
+password.insert(tk.END, pwdfield)
+
+#frame = tk.Frame(root, bg="white")
+#frame.place(relwidth=0.10, relheight=0.10, relx=0.5, rely=0.5)
+
+openFile = tk.Button(root, text="Open FIle", padx=10, pady=5, fg="black", bg="#ffffff")
+
+openFile.pack()
+
+
+root.mainloop()
