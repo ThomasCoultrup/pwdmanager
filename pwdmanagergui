@@ -23,6 +23,23 @@ def open_file():
     
     window.title(f"Password Manager - {filepath}")
 
+def save_file_as():
+  #save the current file as a new file
+  filepath = filedialog.asksaveasfilename(
+    defaultextension=".txt",
+    filetypes=[("Text File", "*.txt")]
+  )
+  
+  if not filepath:
+    return
+  
+  with open(filepath, "w") as output_file:
+    text = text_box.get(1.0, tk.END)
+    output_file.write(text)
+    
+  window.title(f"Password Manager - {filepath}")
+  
+  
 window = tk.Tk()
 window.title("Password Manager")
 window.geometry("800x800")
@@ -57,7 +74,11 @@ save_as_button = tk.Button(master=button_frame)
 save_as_button =["text"] = "Save As..."
 save_as_button.pack(fill=tk.x, padx=5, pady=5)
 
+#put clear button here
+
+
 clear_button["command"] = clear_text_box
 open_button["command"] = open_file
+save_as_button["command"] = save_file_as
 
 window.mainloop()
