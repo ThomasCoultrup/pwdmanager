@@ -4,7 +4,12 @@ import os
 
 window = tk.Tk()
 window.title("Password Manager")
+window.geometry("800x800")
 
+button_frame = tk.Frame(master=window, width=50)
+button_frame["relief"] = tk.GROOVE
+button_frame["borderwidth"] = 2
+button-frame.pack(side=tk.LEFT, fill=tk.Y)
 
 canvas = tk.Canvas(window, height=700, width=700, bg="#000000")
 greeting = tk.Label(text="Welcome to Password Manager")
@@ -28,6 +33,14 @@ password.insert(tk.END, pwdfield)
 openFile = tk.Button(window, text="Open FIle", padx=10, pady=5, fg="black", bg="#ffffff")
 
 openFile.pack()
+
+open_button = tk.Button(master=button_frame)
+open_button["text"] = "Open"
+open_button.pack(fill=tk.x, padx=5, pady=5)
+
+save_as_button = tk.Button(master=button_frame)
+save_as_button =["text"] = "Save As..."
+save_as_button.pack(fill=tk.x, padx=5, pady=5)
 
 
 window.mainloop()
