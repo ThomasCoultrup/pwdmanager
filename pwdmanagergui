@@ -2,6 +2,27 @@ import tkinter as tk
 from tkinter import filedialog, Text
 import os
 
+def clear_text_box():
+  #clear any text in the text fields
+  text_box.delete(1.0, tk.END)
+  window.title("Password Manager")
+
+def open_file():
+  #open a file to read/edit
+  filepath = filedialog.askopenfilename(
+    filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
+    
+    if not filepath:
+    	return
+    
+    #change this to clear entry for username and password
+    clear_text_box()
+    with open(filepath, "r") as input_file:
+    	text = input_file.read()
+    	text_box.insert(tk.END, text)
+    
+    window.title(f"Password Manager - {filepath}")
+
 window = tk.Tk()
 window.title("Password Manager")
 window.geometry("800x800")
@@ -27,12 +48,6 @@ password.pack()
 pwdfield = "Password"
 password.insert(tk.END, pwdfield)
 
-#frame = tk.Frame(window, bg="white")
-#frame.place(relwidth=0.10, relheight=0.10, relx=0.5, rely=0.5)
-
-openFile = tk.Button(window, text="Open FIle", padx=10, pady=5, fg="black", bg="#ffffff")
-
-openFile.pack()
 
 open_button = tk.Button(master=button_frame)
 open_button["text"] = "Open"
@@ -42,5 +57,7 @@ save_as_button = tk.Button(master=button_frame)
 save_as_button =["text"] = "Save As..."
 save_as_button.pack(fill=tk.x, padx=5, pady=5)
 
+clear_button["command"] = clear_text_box
+open_button["command"] = open_file
 
 window.mainloop()
