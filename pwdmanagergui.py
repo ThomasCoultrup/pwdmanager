@@ -7,22 +7,23 @@ import os
   #text_box.delete(1.0, tk.END)
  # window.title("Password Manager")
 
-#def open_file():
-  #open a file to read/edit
-  #filepath = filedialog.askopenfilename(
-    #filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
- # )
+def open_file():
+  #open a file for editing
+  filepath = filedialog.askopenfilename(
+    filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
+  )
 
-#if not filepath:
-    #return
-    
-    #change this to clear entry for username and password
-#clear_text_box()
-#with open(filepath, "r") as input_file:
-    #text = input_file.read()
-    #text_box.insert(tk.END, text)
-    
-#window.title(f"Password Manager - {filepath}")
+  if not filepath:
+    return
+  
+  #clear_user_box()
+  #clear_passwd_box()
+  with open(filepath, "r") as input_file:
+    text = input_file.read()
+    user_box.insert(tk.END, text)
+
+  window.title(f"Password Manager - {filepath}")
+
 
 def save_file_as():
   #save the current file as a new file
@@ -97,7 +98,7 @@ save_as_button.pack(fill=tk.X, padx=5, pady=5)
 
 
 #clear_button["command"] = clear_text_box
-#open_button["command"] = open_file
+open_button["command"] = open_file
 save_as_button["command"] = save_file_as
 
 window.mainloop()
