@@ -16,8 +16,7 @@ def open_file():
   if not filepath:
     return
   
-  #clear_user_box()
-  #clear_passwd_box()
+  #clear_text_box()
   with open(filepath, "r") as input_file:
     text = input_file.read()
     user_box.insert(tk.END, text)
@@ -79,12 +78,13 @@ passwd_box = tk.Entry(window, textvariable=password, show="*")
 passwd_box.pack()
 pwdfield = "Password"
 passwd_box.insert(tk.END, pwdfield)
-frame1.pack()
 
 menu = tk.StringVar()
 menu.set("Select Platform")
 drop_down = tk.OptionMenu(window, menu, "Reddit", "Porn Hub", "Netflix", "Disney Plus")
 drop_down.pack()
+frame1.pack()
+
 
 open_button = tk.Button(master=button_frame)
 open_button["text"] = "Open"
