@@ -67,13 +67,19 @@ button_frame.pack(side=tk.BOTTOM, fill=tk.X)
 greeting = tk.Label(text="Welcome to Password Manager")
 greeting.pack()
 
+user_box_label = tk.Label()
+user_box_label["text"] = "Username:"
+user_box_label.pack()
+
+passwd_box_label = tk.Label()
+passwd_box_label["text"] = "Password:"
+passwd_box_label.pack()
 
 frame1 = tk.Frame(master=window, width=50, height=50)
 username = StringVar()
 user_box = tk.Entry(window, textvariable=username)
 user_box.pack()
-userfield = "Username"
-user_box.insert(tk.END, userfield)
+
 
 def Entry1_Callback(event):
     user_box.selection_range(0, tk.END)
