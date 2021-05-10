@@ -39,7 +39,7 @@ def save_file_as():
     text1 = user_box.get()
     text2 = passwd_box.get()
     text3 = "\n"
-    text4 = menu.get()
+    text4 = platform_box.get()
     text5 = "User: "
     text6 = "Pass: "
     text7 = "Plat: "
@@ -58,27 +58,31 @@ window = tk.Tk()
 window.title("Password Manager")
 window.geometry("400x400")
 
+frame1 = tk.Frame(master=window, width=50, height=50)
+frame1.pack()
+
 button_frame = tk.Frame(master=window, width=50)
 button_frame["relief"] = tk.GROOVE
 button_frame["borderwidth"] = 2
 button_frame.pack(side=tk.BOTTOM, fill=tk.X)
 
 
-greeting = tk.Label(text="Welcome to Password Manager")
-greeting.pack()
-
-user_box_label = tk.Label()
+user_box_label = tk.Label(master=frame1)
 user_box_label["text"] = "Username:"
-user_box_label.pack()
+user_box_label.grid(row=0, column=0)
 
-passwd_box_label = tk.Label()
+passwd_box_label = tk.Label(master=frame1)
 passwd_box_label["text"] = "Password:"
-passwd_box_label.pack()
+passwd_box_label.grid(row=1, column=0)
 
-frame1 = tk.Frame(master=window, width=50, height=50)
+platform_box_label = tk.Label(master=frame1)
+platform_box_label["text"] = "Platform:"
+platform_box_label.grid(row=2, column=0)
+
+
 username = StringVar()
-user_box = tk.Entry(window, textvariable=username)
-user_box.pack()
+user_box = tk.Entry(master=frame1, textvariable=username)
+user_box.grid(row=0, column=1)
 
 
 def Entry1_Callback(event):
@@ -87,23 +91,18 @@ user_box.bind("<FocusIn>", Entry1_Callback)
 user_box.focus() 
 
 password = StringVar()
-passwd_box = tk.Entry(window, textvariable=password, show="*")
-passwd_box.pack()
-pwdfield = "Password"
-passwd_box.insert(tk.END, pwdfield)
+passwd_box = tk.Entry(master=frame1, textvariable=password, show="*")
+passwd_box.grid(row=1, column=1)
+
+platform = StringVar()
+platform_box = tk.Entry(master=frame1, textvariable=platform)
+platform_box.grid(row=2, column=1)
 
 results_return = StringVar()
-results_box = tk.Text(window)
+results_box = tk.Text(master=window)
 results_box.place(x = 107, y = 150, height = 100, width = 186)
 resultsfield = ""
 results_box.insert(tk.END, resultsfield)
-
-
-menu = tk.StringVar()
-menu.set("Select Platform")
-drop_down = tk.OptionMenu(window, menu, "Reddit", "Porn Hub", "Netflix", "Disney Plus")
-drop_down.pack()
-frame1.pack()
 
 
 open_button = tk.Button(master=button_frame)
@@ -123,5 +122,6 @@ clear_button.pack(fill=tk.X, padx=5, pady=5)
 clear_button["command"] = clear_results_box
 open_button["command"] = open_file
 save_as_button["command"] = save_file_as
+
 
 window.mainloop()
