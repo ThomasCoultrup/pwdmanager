@@ -1,3 +1,0 @@
-Plat: gruff
-User: Billy
-Pass: go
